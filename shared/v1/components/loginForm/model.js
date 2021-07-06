@@ -7,6 +7,8 @@ class LoginFormModel {
       "class",
       "row justify-content-center col-xl-4 col-lg-4 col-md-4 col-sm-8"
     );
+    form.setAttribute("id", "loginForm");
+    form.setAttribute("onsubmit", "postCredentials(event)");
     options?.formGroups?.map((formGroup) => {
       form.appendChild(this.createFormGroupRow(formGroup));
     });
@@ -35,7 +37,6 @@ class LoginFormModel {
     formGroup.appendChild(label);
 
     const input = document.createElement("input");
-    console.log(`type: ${input.type}`);
     input.setAttribute("type", `${options?.input?.type}`);
     input.setAttribute("class", "form-control");
     input.setAttribute("id", `${options?.groupName}-group-input`);

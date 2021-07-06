@@ -1,15 +1,15 @@
 const addHeader = () => {
   const header = new HeaderModel({
     navBarBrand: {
-      href: "/",
+      href: "./",
       img: {
-        src: "/jwt.svg",
+        src: "./jwt.svg",
         alt: "",
         width: "70pem",
         height: "50pem",
       },
     },
-    navItems: [{ href: "/", name: "Login" }],
+    navItems: [{ href: "./", name: "Login" }],
   });
 
   document.body.appendChild(header.element);
