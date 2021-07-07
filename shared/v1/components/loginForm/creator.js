@@ -1,5 +1,5 @@
-const addLoginForm = () => {
-  const form = new LoginFormModel({
+const createLoginFormComponent = () => {
+  const loginFormComponent = new LoginFormModel({
     formGroups: [
       {
         groupName: "username",
@@ -15,7 +15,5 @@ const addLoginForm = () => {
     submitText: "Log in",
   });
 
-  document.body.appendChild(form.element);
+  return loginFormComponent;
 };
-
-addLoginForm();

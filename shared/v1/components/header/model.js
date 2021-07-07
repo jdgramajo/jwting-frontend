@@ -3,8 +3,8 @@ class HeaderModel {
     this.navBarBrand = options.navBarBrand;
     this.navItems = options.navItems;
 
-    this.element = document.createElement("nav");
-    this.element.setAttribute(
+    this.component = document.createElement("nav");
+    this.component.setAttribute(
       "class",
       "navbar navbar-expand-sm navbar-dark fixed-top bg-dark"
     );
@@ -24,7 +24,7 @@ class HeaderModel {
       );
     }
 
-    this.element.appendChild(this.navBarContainerElement);
+    this.component.appendChild(this.navBarContainerElement);
   }
 
   createNavBarBrandElement() {
@@ -84,4 +84,8 @@ class HeaderModel {
 
     return navBarCollapseElement;
   }
+
+  appendComponentToElement = (parent = document.body) => {
+    parent.appendChild(this.component);
+  };
 }

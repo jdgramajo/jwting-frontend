@@ -19,15 +19,10 @@ class LoginFormModel {
     formSubmitButton.innerHTML = options?.submitText;
     form.appendChild(formSubmitButton);
 
-    const link = document.createElement("a");
-    link.setAttribute("href", "http://localhost:8080/myRoles");
-    link.innerHTML = "To main";
-    form.appendChild(link);
-
-    this.element = document.createElement("div");
-    this.element.setAttribute("class", "d-flex justify-content-center");
-    this.element.setAttribute("style", "margin-top: 100px;");
-    this.element.appendChild(form);
+    this.component = document.createElement("div");
+    this.component.setAttribute("class", "d-flex justify-content-center");
+    this.component.setAttribute("style", "margin-top: 100px;");
+    this.component.appendChild(form);
   }
 
   createFormGroupRow = (options) => {
@@ -63,5 +58,9 @@ class LoginFormModel {
     flexRow.appendChild(formGroup);
 
     return flexRow;
+  };
+
+  appendComponentToElement = (parent = document.body) => {
+    parent.appendChild(this.component);
   };
 }
