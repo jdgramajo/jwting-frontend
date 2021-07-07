@@ -1,7 +1,7 @@
 const postCredentials = async (event) => {
   event.preventDefault();
 
-  const url = "https://jwting.herokuapp.com:443/auth/signin";
+  const url = "http://localhost:8080/auth/signin";
   const init = {
     method: "POST",
     credentials: "include",
@@ -15,7 +15,16 @@ const postCredentials = async (event) => {
     },
   };
 
-  const response = await fetch(url, init);
-
-  return response;
+  try {
+    const response = await fetch(url, init);
+    if (!response.ok) return response;
+    const myRolesResponse = await fetch("http://localhost:8080/myRoles", {
+      credentials: "include",
+    });
+    const myRolesJSON = await myRolesResponse.json();
+    return myRolesJSON;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
 };

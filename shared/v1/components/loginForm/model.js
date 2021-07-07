@@ -19,6 +19,11 @@ class LoginFormModel {
     formSubmitButton.innerHTML = options?.submitText;
     form.appendChild(formSubmitButton);
 
+    const link = document.createElement("a");
+    link.setAttribute("href", "http://localhost:8080/myRoles");
+    link.innerHTML = "To main";
+    form.appendChild(link);
+
     this.element = document.createElement("div");
     this.element.setAttribute("class", "d-flex justify-content-center");
     this.element.setAttribute("style", "margin-top: 100px;");
