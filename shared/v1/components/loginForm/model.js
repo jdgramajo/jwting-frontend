@@ -8,7 +8,7 @@ class LoginFormModel {
       "row justify-content-center col-xl-4 col-lg-4 col-md-4 col-sm-8"
     );
     form.setAttribute("id", "loginForm");
-    form.setAttribute("onsubmit", "postCredentials(event)");
+    form.setAttribute("onsubmit", "login(event)");
     options?.formGroups?.map((formGroup) => {
       form.appendChild(this.createFormGroupRow(formGroup));
     });

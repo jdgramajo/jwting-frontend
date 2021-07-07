@@ -1,14 +1,11 @@
-const postCredentials = async (event) => {
-  event.preventDefault();
+const backendRootURL = "http://localhost:8080";
 
-  const url = "http://localhost:8080/auth/signin";
+const postCredentials = async (username, password) => {
+  const url = `${backendRootURL}/auth/signin`;
   const init = {
     method: "POST",
     credentials: "include",
-    body: JSON.stringify({
-      username: document.getElementById("username-group-input").value,
-      password: document.getElementById("password-group-input").value,
-    }),
+    body: JSON.stringify({ username, password }),
     headers: {
       Accept: "*/*",
       "Content-type": "application/json; charset=UTF-8",
@@ -18,7 +15,7 @@ const postCredentials = async (event) => {
   try {
     const response = await fetch(url, init);
     if (!response.ok) return response;
-    const myRolesResponse = await fetch("http://localhost:8080/myRoles", {
+    const myRolesResponse = await fetch(`${backendRootURL}/myRoles`, {
       credentials: "include",
     });
     const myRolesJSON = await myRolesResponse.json();
@@ -27,4 +24,14 @@ const postCredentials = async (event) => {
     console.log(err);
     return err;
   }
+};
+
+// Used from a form, needs to prevent default event.
+const login = (event) => {
+  event.preventDefault();
+
+  const username = document.getElementById("username-group-input").value;
+  const password = document.getElementById("password-group-input").value;
+
+  postCredentials(username, password);
 };
