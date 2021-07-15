@@ -15,23 +15,28 @@ const postCredentials = async (username, password) => {
   try {
     const response = await fetch(url, init);
     if (!response.ok) return response;
-    const myRolesResponse = await fetch(`${backendRootURL}/myRoles`, {
+    return await fetch(`${backendRootURL}/myRoles`, {
       credentials: "include",
     });
-    const myRolesJSON = await myRolesResponse.json();
-    return myRolesJSON;
   } catch (err) {
     console.log(err);
-    return err;
   }
 };
 
 // Used from a form, needs to prevent default event.
-const login = (event) => {
+const login = async (event) => {
   event.preventDefault();
 
   const username = document.getElementById("username-group-input").value;
   const password = document.getElementById("password-group-input").value;
 
-  postCredentials(username, password);
+  const credentialsResponse = await postCredentials(username, password);
+  if (credentialsResponse.ok) {
+    const userRoles = await credentialsResponse.json();
+    console.log(userRoles);
+    router.toMain();
+  } else {
+    console.log(credentialsResponse.statusText);
+    router.toError();
+  }
 };
