@@ -14,10 +14,7 @@ const postCredentials = async (username, password) => {
 
   try {
     const response = await fetch(url, init);
-    if (!response.ok) return response;
-    return await fetch(`${backendRootURL}/myRoles`, {
-      credentials: "include",
-    });
+    return response;
   } catch (err) {
     console.log(err);
   }
@@ -32,8 +29,6 @@ const login = async (event) => {
 
   const credentialsResponse = await postCredentials(username, password);
   if (credentialsResponse.ok) {
-    const userRoles = await credentialsResponse.json();
-    console.log(userRoles);
     router.toMain();
   } else {
     console.log(credentialsResponse.statusText);
