@@ -1,4 +1,4 @@
-const header = createHeaderComponent([{ href: "/", name: "Login" }]);
+const header = createHeaderComponent([{ href: "/", name: "Sign in" }]);
 header.appendComponentToElement(document.body);
 
 const loginForm = createLoginFormComponent();

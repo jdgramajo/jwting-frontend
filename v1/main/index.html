@@ -28,16 +28,19 @@
     ></script>
     <!-- EXTERNAL DEPENDENCIES END -->
 
-    <!-- COMPONENTS START -->
+    <!-- SHARED SCRIPTS START -->
     <script src="/shared/v1/requests/session.js"></script>
+    <!-- SHARED SCRIPTS END -->
+
+    <!-- SHARED COMPONENTS START -->
     <script src="/shared/v1/components/header/model.js"></script>
     <script src="/shared/v1/components/header/creator.js"></script>
-    <!-- COMPONENTS END -->
+    <!-- SHARED COMPONENTS END -->
 
-    <!-- CONTROLLER START -->
+    <!-- CONTROLLER (AND COMPONENT) START -->
     <script>
       const header = createHeaderComponent([
-        { href: "/logout", name: "Logout" },
+        { href: "/v1/signout", name: "Sign out" },
       ]);
       header.appendComponentToElement(document.body);
 
@@ -58,7 +61,7 @@
             "d-flex flex-row justify-content-center"
           );
           const mainTitleText = document.createElement("h1");
-          mainTitleText.innerText = "Login successful!";
+          mainTitleText.innerText = "Sign in successful!";
           mainTitleDiv.appendChild(mainTitleText);
 
           const rolesTitleDiv = document.createElement("div");
@@ -94,9 +97,9 @@
           document.body.appendChild(component);
         })
         .catch((err) => {
-          console.log(`error: ${err}`);
+          console.log(`${err}`);
         });
     </script>
-    <!-- CONTROLLER END -->
+    <!-- CONTROLLER (AND COMPONENT) END -->
   </body>
 </html>
