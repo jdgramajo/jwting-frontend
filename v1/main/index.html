@@ -30,6 +30,7 @@
 
     <!-- SHARED SCRIPTS START -->
     <script src="/shared/v1/requests/session.js"></script>
+    <script src="/shared/v1/router.js"></script>
     <!-- SHARED SCRIPTS END -->
 
     <!-- SHARED COMPONENTS START -->
@@ -51,7 +52,8 @@
           if (response.ok) {
             return response.json();
           } else {
-            throw new Error(response.statusText);
+            // TODO: Appropriate actions based on error types.
+            router.toRoot();
           }
         })
         .then((responseObject) => {

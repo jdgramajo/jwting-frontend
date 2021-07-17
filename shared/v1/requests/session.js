@@ -1,4 +1,4 @@
-const backendRootURL = "https://jwting.herokuapp.com:443";
+const backendRootURL = "https://jwting.herokuapp.com:443"; // "http://localhost:8080";
 
 const postCredentials = async (username, password) => {
   const url = `${backendRootURL}/auth/signin`;

@@ -1,4 +1,5 @@
-const header = createHeaderComponent([{ href: "/", name: "Sign in" }]);
+// "//" Specifies same protocol usage
+const header = createHeaderComponent([{ href: "//", name: "Sign in" }]);
 header.appendComponentToElement(document.body);
 
 const loginForm = createLoginFormComponent();

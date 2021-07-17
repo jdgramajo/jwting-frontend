@@ -1,7 +1,7 @@
 const createHeaderComponent = (navItems = []) => {
   const header = new HeaderModel({
     navBarBrand: {
-      href: "/",
+      href: "//", // "//" Specifies same protocol usage
       img: {
         src: "/jwt.svg",
         alt: "",

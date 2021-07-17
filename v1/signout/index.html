@@ -30,6 +30,7 @@
 
     <!-- SHARED COMPONENTS START -->
     <script src="/shared/v1/requests/session.js"></script>
+    <script src="/shared/v1/router.js"></script>
     <!-- SHARED COMPONENTS END -->
 
     <!-- CONTROLLER (AND COMPONENT) START -->
@@ -71,10 +72,17 @@
 
       document.body.appendChild(component);
 
-      fetch(`${backendRootURL}/auth/signout`)
+      fetch(`${backendRootURL}/auth/signout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          Accept: "*/*",
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
         .then((response) => {
           if (response.ok) {
-            window.location.href = "/";
+            router.toRoot();
           } else {
             throw new Error(response.statusText);
           }
