@@ -41,7 +41,7 @@
     <!-- CONTROLLER (AND COMPONENT) START -->
     <script>
       const header = createHeaderComponent([
-        { href: "/v1/signout", name: "Sign out" },
+        { routerFunction: router.toSignout, name: "Sign out" },
       ]);
       header.appendComponentToElement(document.body);
 

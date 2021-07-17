@@ -1,5 +1,7 @@
 // "//" Specifies same protocol usage
-const header = createHeaderComponent([{ href: "//", name: "Sign in" }]);
+const header = createHeaderComponent([
+  { routerFunction: router.toRoot, name: "Sign in" },
+]);
 header.appendComponentToElement(document.body);
 
 const loginForm = createLoginFormComponent();

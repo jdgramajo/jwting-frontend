@@ -28,9 +28,12 @@ class HeaderModel {
   }
 
   createNavBarBrandElement() {
-    const navBarBrandElement = document.createElement("a");
+    const navBarBrandElement = document.createElement("div");
     navBarBrandElement.setAttribute("class", "navbar-brand");
-    navBarBrandElement.setAttribute("href", this.navBarBrand.href);
+    navBarBrandElement.addEventListener(
+      "click",
+      this.navBarBrand.routerFunction
+    );
 
     const navBarBrandImageElement = document.createElement("img");
     navBarBrandImageElement.setAttribute("src", this.navBarBrand.img.src);
@@ -66,11 +69,12 @@ class HeaderModel {
     this.navItems.map((item) => {
       const listItemElement = document.createElement("li");
       listItemElement.setAttribute("class", "nav-item align-self-end");
-      const anchorElement = document.createElement("a");
-      anchorElement.setAttribute("href", item.href);
-      anchorElement.setAttribute("class", "nav-link");
-      anchorElement.innerText = item.name;
-      listItemElement.appendChild(anchorElement);
+      const divElement = document.createElement("div");
+      divElement.setAttribute("class", "nav-link");
+      divElement.addEventListener("click", item.routerFunction);
+      divElement.style.cursor = "pointer";
+      divElement.innerText = item.name;
+      listItemElement.appendChild(divElement);
       navBarItemsListElement.appendChild(listItemElement);
     });
 

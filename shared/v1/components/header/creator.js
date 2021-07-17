@@ -1,7 +1,7 @@
 const createHeaderComponent = (navItems = []) => {
   const header = new HeaderModel({
     navBarBrand: {
-      href: "//", // "//" Specifies same protocol usage
+      routerFunction: router.toRoot,
       img: {
         src: "/jwt.svg",
         alt: "",
