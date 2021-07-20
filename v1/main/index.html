@@ -38,70 +38,9 @@
     <script src="/shared/v1/components/header/creator.js"></script>
     <!-- SHARED COMPONENTS END -->
 
-    <!-- CONTROLLER (AND COMPONENT) START -->
-    <script>
-      const header = createHeaderComponent([
-        { routerFunction: router.toSignout, name: "Sign out" },
-      ]);
-      header.appendComponentToElement(document.body);
-
-      fetch(`${backendRootURL}/myRoles`, {
-        credentials: "include",
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            // TODO: Appropriate actions based on error types.
-            router.toRoot();
-          }
-        })
-        .then((responseObject) => {
-          const mainTitleDiv = document.createElement("div");
-          mainTitleDiv.setAttribute(
-            "class",
-            "d-flex flex-row justify-content-center"
-          );
-          const mainTitleText = document.createElement("h1");
-          mainTitleText.innerText = "Sign in successful!";
-          mainTitleDiv.appendChild(mainTitleText);
-
-          const rolesTitleDiv = document.createElement("div");
-          rolesTitleDiv.setAttribute(
-            "class",
-            "d-flex flex-row justify-content-center"
-          );
-          rolesTitleDiv.setAttribute(
-            "style",
-            "margin-top: 50px; margin-bottom: 25px;"
-          );
-          const rolesTitleText = document.createElement("h2");
-          rolesTitleText.innerText = "Your roles are:";
-          rolesTitleDiv.appendChild(rolesTitleText);
-
-          const rolesList = document.createElement("ul");
-          responseObject.roles.map((role) => {
-            const item = document.createElement("li");
-            item.innerText = `${role}`;
-            rolesList.appendChild(item);
-          });
-
-          const component = document.createElement("div");
-          component.setAttribute(
-            "class",
-            "container col-xl-4 col-lg-4 col-md-4 col-sm-8"
-          );
-          component.setAttribute("style", "margin-top: 150px;");
-          component.appendChild(mainTitleDiv);
-          component.appendChild(rolesTitleDiv);
-          component.appendChild(rolesList);
-
-          document.body.appendChild(component);
-        })
-        .catch((err) => {
-          console.log(`${err}`);
-        });
-    </script>
-    <!-- CONTROLLER (AND COMPONENT) END -->
+    <!-- OWN DEPENDENCIES START -->
+    <script src="/v1/main/model.js"></script>
+    <script src="/v1/main/controller.js"></script>
+    <!-- OWN DEPENDENCIES END -->
   </body>
 </html>
