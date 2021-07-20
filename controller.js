@@ -1,4 +1,3 @@
-// "//" Specifies same protocol usage
 const header = createHeaderComponent([
   { routerFunction: router.toRoot, name: "Sign in" },
 ]);
