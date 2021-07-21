@@ -3,5 +3,20 @@ const header = createHeaderComponent([
 ]);
 header.appendComponentToElement(document.body);
 
-const loginForm = createFormComponent();
+const loginForm = createFormComponent(
+  [
+    {
+      groupName: "username",
+      labelText: "Username:",
+      input: { type: "text", helpText: "Your username." },
+    },
+    {
+      groupName: "password",
+      labelText: "Password:",
+      input: { type: "password" },
+    },
+  ],
+  "Login",
+  "login(event)"
+);
 loginForm.appendComponentToElement(document.body);

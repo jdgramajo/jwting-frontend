@@ -1,5 +1,6 @@
 const start = async () => {
   const header = createHeaderComponent([
+    { routerFunction: router.toChangePwd, name: "Change Password" },
     { routerFunction: router.toSignout, name: "Sign out" },
   ]);
   header.appendComponentToElement(document.body);

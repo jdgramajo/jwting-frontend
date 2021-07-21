@@ -8,7 +8,7 @@ class FormModel {
       "row justify-content-center col-xl-4 col-lg-4 col-md-4 col-sm-8"
     );
     form.setAttribute("id", "loginForm");
-    form.setAttribute("onsubmit", "login(event)");
+    form.setAttribute("onsubmit", options.submitFunctionCall);
     options?.formGroups?.map((formGroup) => {
       form.appendChild(this.createFormGroupRow(formGroup));
     });
@@ -16,7 +16,7 @@ class FormModel {
     const formSubmitButton = document.createElement("button");
     formSubmitButton.setAttribute("type", "submit");
     formSubmitButton.setAttribute("class", "btn btn-dark mt-2 col-10");
-    formSubmitButton.innerHTML = options?.submitText;
+    formSubmitButton.innerHTML = options.submitText;
     form.appendChild(formSubmitButton);
 
     this.component = document.createElement("div");

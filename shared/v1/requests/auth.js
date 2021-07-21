@@ -20,12 +20,30 @@ const postCredentials = async (username, password) => {
   }
 };
 
-// Used from a form, needs to prevent default event.
+// Use as "login(event)" in a "onsubmit" attribute.
 const login = async (event) => {
   event.preventDefault();
 
   const username = document.getElementById("username-group-input").value;
   const password = document.getElementById("password-group-input").value;
+
+  const credentialsResponse = await postCredentials(username, password);
+  if (credentialsResponse.ok) {
+    router.toMain();
+  } else {
+    console.log(credentialsResponse.statusText);
+    router.toError();
+  }
+};
+
+// Use as "changePWD(event)" in a "onsubmit" attribute.
+const changePWD = async (event) => {
+  event.preventDefault();
+
+  const newPassword = document.getElementById("new-password-group-input").value;
+  const confirmPassword = document.getElementById(
+    "confirm-password-group-input"
+  ).value;
 
   const credentialsResponse = await postCredentials(username, password);
   if (credentialsResponse.ok) {
