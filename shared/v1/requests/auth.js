@@ -20,7 +20,7 @@ const postCredentials = async (username, password) => {
   }
 };
 
-// Use as "login(event)" in a "onsubmit" attribute.
+// Use as "login(event)" in a "onsubmit" attribute in a form.
 const login = async (event) => {
   event.preventDefault();
 
@@ -36,20 +36,39 @@ const login = async (event) => {
   }
 };
 
-// Use as "changePWD(event)" in a "onsubmit" attribute.
+// Use as "changePWD(event)" in a "onsubmit" attribute in a form.
 const changePWD = async (event) => {
-  event.preventDefault();
+  // event.preventDefault();
+  // const newPassword = document.getElementById("new-password-group-input").value;
+  // const confirmPassword = document.getElementById(
+  //   "confirm-password-group-input"
+  // ).value;
+  // const credentialsResponse = await postCredentials(username, password);
+  // if (credentialsResponse.ok) {
+  //   router.toMain();
+  // } else {
+  //   console.log(credentialsResponse.statusText);
+  //   router.toError();
+  // }
+};
 
-  const newPassword = document.getElementById("new-password-group-input").value;
-  const confirmPassword = document.getElementById(
-    "confirm-password-group-input"
-  ).value;
+const getMyRolesRequest = async () => {
+  const url = `${backendRootURL}/myRoles`;
+  const init = { credentials: "include" };
 
-  const credentialsResponse = await postCredentials(username, password);
-  if (credentialsResponse.ok) {
-    router.toMain();
-  } else {
-    console.log(credentialsResponse.statusText);
-    router.toError();
-  }
+  return await fetch(url, init);
+};
+
+const signoutRequest = async () => {
+  const url = `${backendRootURL}/auth/signout`;
+  const init = {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "*/*",
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+
+  return await fetch(url, init);
 };

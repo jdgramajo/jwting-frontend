@@ -1,10 +1,9 @@
 const start = async () => {
   try {
-    const response = await fetch(`${backendRootURL}/myRoles`, {
-      credentials: "include",
-    });
+    const response = await getMyRolesRequest();
 
     if (!response.ok) {
+      console.log(response.statusText);
       router.toMain();
       return;
     }
@@ -32,6 +31,7 @@ const start = async () => {
     changePasswordForm.appendComponentToElement(document.body);
   } catch (err) {
     console.log(err);
+    router.toError();
   }
 };
 
