@@ -1,4 +1,4 @@
-class LoginFormModel {
+class FormModel {
   constructor(options) {
     if (!options?.formGroups?.length) return;
 

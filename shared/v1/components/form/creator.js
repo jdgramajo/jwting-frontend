@@ -1,5 +1,5 @@
-const createLoginFormComponent = () => {
-  const loginFormComponent = new LoginFormModel({
+const createFormComponent = () => {
+  const formComponent = new FormModel({
     formGroups: [
       {
         groupName: "username",
@@ -15,5 +15,5 @@ const createLoginFormComponent = () => {
     submitText: "Log in",
   });
 
-  return loginFormComponent;
+  return formComponent;
 };

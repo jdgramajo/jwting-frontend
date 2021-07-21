@@ -3,5 +3,5 @@ const header = createHeaderComponent([
 ]);
 header.appendComponentToElement(document.body);
 
-const loginForm = createLoginFormComponent();
+const loginForm = createFormComponent();
 loginForm.appendComponentToElement(document.body);
