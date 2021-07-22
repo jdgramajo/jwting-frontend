@@ -12,28 +12,7 @@ const postCredentials = async (username, password) => {
     },
   };
 
-  try {
-    const response = await fetch(url, init);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-// Use as "login(event)" in a "onsubmit" attribute in a form.
-const login = async (event) => {
-  event.preventDefault();
-
-  const username = document.getElementById("username-group-input").value;
-  const password = document.getElementById("password-group-input").value;
-
-  const credentialsResponse = await postCredentials(username, password);
-  if (credentialsResponse.ok) {
-    router.toMain();
-  } else {
-    console.log(credentialsResponse.statusText);
-    router.toError();
-  }
+  return await fetch(url, init);
 };
 
 // Use as "changePWD(event)" in a "onsubmit" attribute in a form.

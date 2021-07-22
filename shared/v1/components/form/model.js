@@ -37,18 +37,19 @@ class FormModel {
     formGroup.appendChild(label);
 
     const input = document.createElement("input");
-    input.setAttribute("type", `${options?.input?.type}`);
+    input.setAttribute("type", `${options.input?.type}`);
     input.setAttribute("class", "form-control");
-    input.setAttribute("id", `${options?.groupName}-group-input`);
+    input.setAttribute("id", `${options.groupName}-group-input`);
+    if (options.input?.required) input.setAttribute("required", "true");
     formGroup.appendChild(input);
 
-    if (options?.input?.helpText) {
+    if (options.input?.helpText) {
       input.setAttribute(
         "aria-describedby",
         `${options?.input?.name}-group-input-help`
       );
       const inputHelp = document.createElement("div");
-      inputHelp.setAttribute("id", `${options?.groupName}-group-input-help`);
+      inputHelp.setAttribute("id", `${options.groupName}-group-input-help`);
       inputHelp.setAttribute("class", "form-text");
       inputHelp.innerHTML = `${options?.input?.helpText}`;
       formGroup.appendChild(inputHelp);
