@@ -21,13 +21,13 @@ const loginForm = createFormComponent(
 );
 loginForm.appendComponentToElement(document.body);
 
-// SERVICE ??? WILL IT BE HOISTED ???
+// SERVICE ??? IT WAS HOISTED !!!
 
-// Check the model to see the form is within a div. Components are always divs.
+// The event.target is the form.
 const login = async (event) => {
   event.preventDefault();
 
-  const formElement = loginForm.component.firstChild;
+  const formElement = event.target;
 
   if (!formElement.checkValidity()) {
     formElement.classList.add("was-validated");

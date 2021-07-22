@@ -15,20 +15,19 @@ const postCredentials = async (username, password) => {
   return await fetch(url, init);
 };
 
-// Use as "changePWD(event)" in a "onsubmit" attribute in a form.
-const changePWD = async (event) => {
-  // event.preventDefault();
-  // const newPassword = document.getElementById("new-password-group-input").value;
-  // const confirmPassword = document.getElementById(
-  //   "confirm-password-group-input"
-  // ).value;
-  // const credentialsResponse = await postCredentials(username, password);
-  // if (credentialsResponse.ok) {
-  //   router.toMain();
-  // } else {
-  //   console.log(credentialsResponse.statusText);
-  //   router.toError();
-  // }
+const postPWDChange = async (newPassword, confirmPassword) => {
+  const url = `${backendRootURL}/auth/changepwd`;
+  const init = {
+    method: "POST",
+    credentials: "include",
+    body: JSON.stringify({ newPassword, confirmPassword }),
+    headers: {
+      Accept: "*/*",
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+
+  return await fetch(url, init);
 };
 
 const getMyRolesRequest = async () => {
