@@ -13,8 +13,9 @@ const start = async () => {
     ]);
     header.appendComponentToElement(document.body);
 
-    const changePasswordForm = createFormComponent(
-      [
+    const changePasswordForm = createFormComponent({
+      formId: "change-password-form",
+      formGroups: [
         {
           groupName: "new-password",
           labelText: "New Password:",
@@ -26,9 +27,9 @@ const start = async () => {
           input: { type: "password", required: true },
         },
       ],
-      "Change Password",
-      "changePWD(event)"
-    );
+      submitText: "Change Password",
+      submitFunctionString: "changePWD(event)",
+    });
     changePasswordForm.appendComponentToElement(document.body);
   } catch (err) {
     console.log(err);

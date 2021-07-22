@@ -1,13 +1,12 @@
 const createFormComponent = (
-  formGroups = [],
-  submitText = "Submit",
-  submitFunctionCall = "event.preventDefault(); alert('Form action!');"
+  options = {
+    formId: "john-doe-of-forms",
+    formGroups: [],
+    submitText: "Submit",
+    submitFunctionString: "event.preventDefault(); alert('Form action!');",
+  }
 ) => {
-  const formComponent = new FormModel({
-    formGroups,
-    submitText,
-    submitFunctionCall,
-  });
+  const formComponent = new FormModel(options);
 
   return formComponent;
 };

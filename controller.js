@@ -3,8 +3,9 @@ const header = createHeaderComponent([
 ]);
 header.appendComponentToElement(document.body);
 
-const loginForm = createFormComponent(
-  [
+const loginForm = createFormComponent({
+  formId: "login-form",
+  formGroups: [
     {
       groupName: "username",
       labelText: "Username:",
@@ -16,7 +17,7 @@ const loginForm = createFormComponent(
       input: { type: "password", required: true },
     },
   ],
-  "Login",
-  "login(event)"
-);
+  submitText: "Login",
+  submitFunctionString: "login(event)",
+});
 loginForm.appendComponentToElement(document.body);

@@ -7,8 +7,8 @@ class FormModel {
       "class",
       "row justify-content-center col-xl-4 col-lg-4 col-md-4 col-sm-8"
     );
-    form.setAttribute("id", "loginForm");
-    form.setAttribute("onsubmit", options.submitFunctionCall);
+    form.setAttribute("id", options.formId);
+    form.setAttribute("onsubmit", options.submitFunctionString);
     form.setAttribute("novalidate", "true");
     options?.formGroups?.map((formGroup) => {
       form.appendChild(this.createFormGroupRow(formGroup));
@@ -39,6 +39,8 @@ class FormModel {
 
     const input = document.createElement("input");
     input.setAttribute("type", `${options.input?.type}`);
+    if (options.input?.type === "password")
+      input.setAttribute("autocomplete", "new-password");
     input.setAttribute("class", "form-control");
     input.setAttribute("id", `${options.groupName}-group-input`);
     if (options.input?.required) input.setAttribute("required", "true");
