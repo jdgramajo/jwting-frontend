@@ -9,6 +9,7 @@ class FormModel {
     );
     form.setAttribute("id", "loginForm");
     form.setAttribute("onsubmit", options.submitFunctionCall);
+    form.setAttribute("novalidate", "true");
     options?.formGroups?.map((formGroup) => {
       form.appendChild(this.createFormGroupRow(formGroup));
     });
