@@ -93,3 +93,5 @@ class HeaderModel {
     parent.appendChild(this.component);
   };
 }
+
+export default HeaderModel;

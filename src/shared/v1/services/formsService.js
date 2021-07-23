@@ -77,3 +77,5 @@ const changePWD = async (event) => {
     return false;
   }
 };
+
+export { login, changePWD };

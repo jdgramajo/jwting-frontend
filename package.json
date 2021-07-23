@@ -1,0 +1,27 @@
+{
+  "name": "jwting-frontend",
+  "version": "1.0.0",
+  "description": "<h1>jwting-frontend</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdgramajo/jwting-frontend.git"
+  },
+  "keywords": [],
+  "author": "JD",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jdgramajo/jwting-frontend/issues"
+  },
+  "homepage": "https://github.com/jdgramajo/jwting-frontend#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

@@ -1,3 +1,6 @@
+import HeaderModel from "./model";
+import router from "../../router";
+
 const createHeaderComponent = (navItems = []) => {
   const header = new HeaderModel({
     navBarBrand: {
@@ -14,3 +17,5 @@ const createHeaderComponent = (navItems = []) => {
 
   return header;
 };
+
+export default createHeaderComponent;

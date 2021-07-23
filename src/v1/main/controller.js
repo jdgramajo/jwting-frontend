@@ -1,3 +1,7 @@
+import createHeaderComponent from "../../shared/v1/components/header/creator";
+import router from "../../shared/v1/router";
+import MainModel from "./model";
+
 const start = async () => {
   const headerComponent = createHeaderComponent([
     { routerFunction: router.toChangePwd, name: "Change Password" },

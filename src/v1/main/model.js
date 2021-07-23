@@ -44,3 +44,5 @@ class MainModel {
     parent.appendChild(this.component);
   };
 }
+
+export default MainModel;
