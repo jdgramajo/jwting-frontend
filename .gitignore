@@ -65,5 +65,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Webpack
+# default build directory
+build
 # v1 build of the app
 v1

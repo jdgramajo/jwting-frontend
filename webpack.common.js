@@ -8,7 +8,6 @@ module.exports = {
     "main/main-bundle": "./src/v1/main/controller.js",
   },
   output: {
-    filename: "[name].js",
     path: path.resolve(__dirname, "v1"),
   },
   plugins: [
@@ -23,8 +22,4 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
-  mode: "development",
-  devServer: {
-    watchContentBase: false,
-  },
 };
