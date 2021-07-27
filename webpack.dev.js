@@ -10,5 +10,6 @@ module.exports = merge(common, {
   },
   devServer: {
     publicPath: "/v1/",
+    writeToDisk: true,
   },
 });
