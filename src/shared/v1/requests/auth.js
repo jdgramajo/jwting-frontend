@@ -50,3 +50,11 @@ const signoutRequest = async () => {
 
   return await fetch(url, init);
 };
+
+module.exports = {
+  backendRootURL,
+  postCredentials,
+  postPWDChange,
+  getMyRolesRequest,
+  signoutRequest,
+};

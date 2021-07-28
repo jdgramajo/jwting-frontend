@@ -1,3 +1,5 @@
+import SignoutModel from "./model";
+
 const start = async () => {
   const signoutComponent = new SignoutModel();
   signoutComponent.appendComponentToElement(document.body);

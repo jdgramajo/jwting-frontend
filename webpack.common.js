@@ -20,6 +20,11 @@ module.exports = {
       template: "./src/template.html",
       chunks: ["main/main-bundle"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "error/index.html",
+      template: "./src/v1/error/index.html",
+      chunks: [],
+    }),
     new CleanWebpackPlugin(),
   ],
 };

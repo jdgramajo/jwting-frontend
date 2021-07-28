@@ -2,7 +2,6 @@ import createHeaderComponent from "./shared/v1/components/header/creator";
 import createFormComponent from "./shared/v1/components/form/creator";
 import router from "./shared/v1/router";
 import { login } from "./shared/v1/services/formsService";
-// import FormService from "./shared/v1/services/formsService";
 
 const header = createHeaderComponent([
   { routerFunction: router.toRoot, name: "Sign in" },
@@ -24,7 +23,6 @@ const loginForm = createFormComponent({
     },
   ],
   submitText: "Login",
-  submitFunctionString: "login(event)",
   submitFunction: login,
 });
 loginForm.appendComponentToElement(document.body);

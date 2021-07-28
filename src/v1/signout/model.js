@@ -40,3 +40,5 @@ class SignoutModel {
     parent.appendChild(this.component);
   };
 }
+
+export default SignoutModel;
