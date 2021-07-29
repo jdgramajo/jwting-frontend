@@ -1,13 +1,51 @@
+import { getMyRolesRequest } from "../../shared/v1/requests/auth";
+
 class MainModel {
-  constructor(roles = []) {
+  constructor() {
     const mainTitleDiv = document.createElement("div");
     mainTitleDiv.setAttribute(
       "class",
       "d-flex flex-row justify-content-center"
     );
-    const mainTitleText = document.createElement("h1");
-    mainTitleText.innerText = "Sign in successful!";
-    mainTitleDiv.appendChild(mainTitleText);
+    this.mainTitleText = document.createElement("h1");
+    mainTitleDiv.appendChild(this.mainTitleText);
+
+    this.component = document.createElement("div");
+    this.component.setAttribute(
+      "class",
+      "container col-xl-4 col-lg-4 col-md-4 col-sm-8"
+    );
+    this.component.setAttribute("style", "margin-top: 150px;");
+    this.component.appendChild(mainTitleDiv);
+  }
+
+  getUserRoles = async () => {
+    try {
+      const response = await getMyRolesRequest();
+      if (response.ok) {
+        const { roles } = await response.json();
+        console.log(roles);
+        return roles;
+      } else {
+        // TODO: Appropriate actions based on error types.
+        console.log(response.statusText);
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+      // router.toError();
+      return;
+    }
+  };
+
+  setComponent = async () => {
+    const roles = await this.getUserRoles();
+    if (!roles) {
+      this.mainTitleText.innerText = "Couldn't get roles!";
+      return;
+    }
+
+    this.mainTitleText.innerText = "Sign in successful!";
 
     const rolesTitleDiv = document.createElement("div");
     rolesTitleDiv.setAttribute(
@@ -29,18 +67,12 @@ class MainModel {
       rolesList.appendChild(item);
     });
 
-    this.component = document.createElement("div");
-    this.component.setAttribute(
-      "class",
-      "container col-xl-4 col-lg-4 col-md-4 col-sm-8"
-    );
-    this.component.setAttribute("style", "margin-top: 150px;");
-    this.component.appendChild(mainTitleDiv);
     this.component.appendChild(rolesTitleDiv);
     this.component.appendChild(rolesList);
-  }
+  };
 
-  appendComponentToElement = (parent = document.body) => {
+  appendComponentToElement = async (parent = document.body) => {
+    await this.setComponent();
     parent.appendChild(this.component);
   };
 }
