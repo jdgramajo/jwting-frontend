@@ -1,3 +1,9 @@
+import { getMyRolesRequest } from "../../shared/v1/requests/auth";
+import createHeaderComponent from "../../shared/v1/components/header/creator";
+import createFormComponent from "../../shared/v1/components/form/creator";
+import router from "../../shared/v1/router";
+import { changePWD } from "../../shared/v1/services/formsService";
+
 const start = async () => {
   try {
     const response = await getMyRolesRequest();
@@ -28,7 +34,7 @@ const start = async () => {
         },
       ],
       submitText: "Change Password",
-      submitFunctionString: "changePWD(event)",
+      submitFunction: changePWD,
     });
     changePasswordForm.appendComponentToElement(document.body);
   } catch (err) {
