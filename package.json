@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/jdgramajo/jwting-frontend#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "html-webpack-plugin": "^5.3.2",
     "webpack": "^5.46.0",

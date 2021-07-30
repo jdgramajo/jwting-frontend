@@ -1,6 +1,9 @@
 import SignoutModel from "./model";
 import { signoutRequest } from "../../shared/v1/requests/auth";
 import router from "../../shared/v1/router";
+import jwt from "../../../jwt.svg";
+
+document.getElementById("tabIcon").setAttribute("href", jwt);
 
 const start = async () => {
   const signoutComponent = new SignoutModel();

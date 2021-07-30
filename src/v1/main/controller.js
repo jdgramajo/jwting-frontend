@@ -1,6 +1,9 @@
 import createHeaderComponent from "../../shared/v1/components/header/creator";
 import MainModel from "./model";
 import router from "../../shared/v1/router";
+import jwt from "../../../jwt.svg";
+
+document.getElementById("tabIcon").setAttribute("href", jwt);
 
 const headerComponent = createHeaderComponent([
   { routerFunction: router.toChangePwd, name: "Change Password" },

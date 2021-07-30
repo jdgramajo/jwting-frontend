@@ -44,4 +44,12 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(svg)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
 };
