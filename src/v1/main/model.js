@@ -1,5 +1,3 @@
-import { getMyRolesRequest } from "../../shared/v1/requests/auth";
-
 class MainModel {
   constructor() {
     const mainTitleDiv = document.createElement("div");
@@ -17,35 +15,6 @@ class MainModel {
     );
     this.component.setAttribute("style", "margin-top: 150px;");
     this.component.appendChild(mainTitleDiv);
-  }
-
-  getUserRoles = async () => {
-    try {
-      const response = await getMyRolesRequest();
-      if (response.ok) {
-        const { roles } = await response.json();
-        console.log(roles);
-        return roles;
-      } else {
-        // TODO: Appropriate actions based on error types.
-        console.log(response.statusText);
-        return;
-      }
-    } catch (err) {
-      console.log(err);
-      // router.toError();
-      return;
-    }
-  };
-
-  setComponent = async () => {
-    const roles = await this.getUserRoles();
-    if (!roles) {
-      this.mainTitleText.innerText = "Couldn't get roles!";
-      return;
-    }
-
-    this.mainTitleText.innerText = "Sign in successful!";
 
     const rolesTitleDiv = document.createElement("div");
     rolesTitleDiv.setAttribute(
@@ -56,23 +25,15 @@ class MainModel {
       "style",
       "margin-top: 50px; margin-bottom: 25px;"
     );
-    const rolesTitleText = document.createElement("h2");
-    rolesTitleText.innerText = "Your roles are:";
-    rolesTitleDiv.appendChild(rolesTitleText);
-
-    const rolesList = document.createElement("ul");
-    roles.map((role) => {
-      const item = document.createElement("li");
-      item.innerText = `${role}`;
-      rolesList.appendChild(item);
-    });
-
+    this.rolesTitleText = document.createElement("h2");
+    rolesTitleDiv.appendChild(this.rolesTitleText);
     this.component.appendChild(rolesTitleDiv);
-    this.component.appendChild(rolesList);
-  };
 
-  appendComponentToElement = async (parent = document.body) => {
-    await this.setComponent();
+    this.rolesList = document.createElement("ul");
+    this.component.appendChild(this.rolesList);
+  }
+
+  appendComponentToElement = (parent = document.body) => {
     parent.appendChild(this.component);
   };
 }

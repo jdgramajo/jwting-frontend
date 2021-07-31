@@ -47,8 +47,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(svg)$/i,
+        test: /\.(svg)$/,
         type: "asset/resource",
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: [["@babel/plugin-transform-runtime"]],
+          },
+        },
       },
     ],
   },

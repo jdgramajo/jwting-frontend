@@ -51,7 +51,7 @@ const signoutRequest = async () => {
   return await fetch(url, init);
 };
 
-module.exports = {
+export {
   backendRootURL,
   postCredentials,
   postPWDChange,
