@@ -70,3 +70,6 @@ node_modules/
 build
 # v1 build of the app
 v1
+
+# VSCode
+.vscode/

@@ -9,8 +9,10 @@ module.exports = {
     "signout/signout": "./src/v1/signout/controller.js",
     "changepwd/changepwd": "./src/v1/changepwd/controller.js",
   },
+  target: ["web", "es5"],
   output: {
     path: path.resolve(__dirname, "v1"),
+    filename: "[name].[contenthash].js",
   },
   optimization: {
     splitChunks: {
