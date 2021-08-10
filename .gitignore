@@ -66,10 +66,10 @@ node_modules/
 .env
 
 # Webpack
-# default build directory
-build
-# v1 build of the app
-v1
+# default root build directory
+build/*
+# root v1 build of the app
+v1/*
 
 # VSCode
 .vscode/
