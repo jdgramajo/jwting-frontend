@@ -1,5 +1,5 @@
 class MainModel {
-  constructor() {
+  constructor(roles) {
     const mainTitleDiv = document.createElement("div");
     mainTitleDiv.setAttribute(
       "class",
@@ -31,10 +31,27 @@ class MainModel {
 
     this.rolesList = document.createElement("ul");
     this.component.appendChild(this.rolesList);
+    this.addRolesToMain(roles);
   }
 
   appendComponentToElement = (parent = document.body) => {
     parent.appendChild(this.component);
+  };
+
+  addRolesToMain = (roles) => {
+    if (roles) {
+      this.mainTitleText.innerText = "Login successful!";
+      this.rolesTitleText.innerText = "Your roles are:";
+      roles.map((role) => {
+        const item = document.createElement("li");
+        item.innerText = `${role}`;
+        this.rolesList.appendChild(item);
+      });
+    } else {
+      this.mainTitleText.innerText = "Login successful...";
+      this.rolesTitleText.innerText = "...but getting roles failed.";
+      this.mainTitleText.innerText = `No roles found: ${roles}`;
+    }
   };
 }
 

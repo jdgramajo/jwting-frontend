@@ -1,7 +1,7 @@
 import MainModel from "./model";
 
-const createMainComponent = () => {
-  const mainComponent = new MainModel();
+const createMainComponent = (roles) => {
+  const mainComponent = new MainModel(roles);
   return mainComponent;
 };
 
