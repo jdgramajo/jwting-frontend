@@ -45,8 +45,7 @@ class MainModel {
       });
     } else {
       this.mainTitleText.innerText = "Login successful...";
-      this.rolesTitleText.innerText = "...but getting roles failed.";
-      this.mainTitleText.innerText = `No roles found: ${roles}`;
+      this.rolesTitleText.innerText = `...but getting roles failed, roles says: ${roles}`;
     }
   };
 }

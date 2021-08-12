@@ -3,7 +3,7 @@ import MainModel from "./model";
 import jwt from "../../../jwt.svg";
 
 import router from "../../shared/v1/router";
-import { getMyRolesRequest } from "../../shared/v1/requests/auth";
+import { getUserRoles } from "../../shared/v1/services/userService";
 
 const tabIcon = document.createElement("link");
 tabIcon.setAttribute("rel", "icon");
@@ -28,15 +28,7 @@ const start = async () => {
   });
   document.body.appendChild(headerModel.component);
 
-  const response = await getMyRolesRequest();
-  if (!response.ok) {
-    // TODO: Appropriate actions based on error types.
-    console.log(response.statusText);
-    router.toError();
-    return;
-  }
-
-  const { roles } = await response.json();
+  const roles = await getUserRoles();
   const mainModel = new MainModel(roles);
   document.body.appendChild(mainModel.component);
 };

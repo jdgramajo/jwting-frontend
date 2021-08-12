@@ -20,7 +20,7 @@ const login = async (event) => {
     const credentialsResponse = await postCredentials(username, password);
     if (credentialsResponse.ok) {
       router.toMain();
-      // return true;
+      return true;
     } else {
       console.log(credentialsResponse.statusText);
       router.toError();
