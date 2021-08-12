@@ -5,9 +5,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   entry: {
     bundle: "./src/controller.js",
-    "main/main": "./src/v1/main/controller.js",
-    "signout/signout": "./src/v1/signout/controller.js",
-    "changepwd/changepwd": "./src/v1/changepwd/controller.js",
+    main: "./src/v1/main/controller.js",
+    error: "./src/v1/error/controller.js",
+    signout: "./src/v1/signout/controller.js",
+    changepwd: "./src/v1/changepwd/controller.js",
   },
   target: ["web", "es5"],
   output: {
@@ -26,23 +27,23 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: "error/index.html",
-      template: "./src/v1/error/index.html",
-      chunks: [],
+      template: "./src/template.html",
+      chunks: ["error"],
     }),
     new HtmlWebpackPlugin({
       filename: "main/index.html",
       template: "./src/template.html",
-      chunks: ["main/main"],
+      chunks: ["main"],
     }),
     new HtmlWebpackPlugin({
       filename: "signout/index.html",
       template: "./src/template.html",
-      chunks: ["signout/signout"],
+      chunks: ["signout"],
     }),
     new HtmlWebpackPlugin({
       filename: "changepwd/index.html",
       template: "./src/template.html",
-      chunks: ["changepwd/changepwd"],
+      chunks: ["changepwd"],
     }),
     new CleanWebpackPlugin(),
   ],

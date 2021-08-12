@@ -35,10 +35,6 @@ class SignoutModel {
     this.component.appendChild(mainTitleDiv);
     this.component.appendChild(spinnerFlexContainerDiv);
   }
-
-  appendComponentToElement = (parent = document.body) => {
-    parent.appendChild(this.component);
-  };
 }
 
 export default SignoutModel;

@@ -31,14 +31,10 @@ class MainModel {
 
     this.rolesList = document.createElement("ul");
     this.component.appendChild(this.rolesList);
-    this.addRolesToMain(roles);
+    this.addRolesToList(roles);
   }
 
-  appendComponentToElement = (parent = document.body) => {
-    parent.appendChild(this.component);
-  };
-
-  addRolesToMain = (roles) => {
+  addRolesToList = (roles) => {
     if (roles) {
       this.mainTitleText.innerText = "Login successful!";
       this.rolesTitleText.innerText = "Your roles are:";

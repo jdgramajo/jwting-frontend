@@ -67,9 +67,9 @@ node_modules/
 
 # Webpack
 # default root build directory
-build/*
+/build
 # root v1 build of the app
-v1/*
+/v1
 
 # VSCode
-.vscode/
+.vscode

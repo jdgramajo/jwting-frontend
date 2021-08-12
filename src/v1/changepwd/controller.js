@@ -1,11 +1,15 @@
-import { getMyRolesRequest } from "../../shared/v1/requests/auth";
-import createHeaderComponent from "../../shared/v1/components/header/creator";
-import createFormComponent from "../../shared/v1/components/form/creator";
-import router from "../../shared/v1/router";
-import { changePWD } from "../../shared/v1/services/formsService";
+import HeaderModel from "../../shared/v1/components/header/model";
+import FormModel from "../../shared/v1/components/form/model";
 import jwt from "../../../jwt.svg";
 
-document.getElementById("tabIcon").setAttribute("href", jwt);
+import { getMyRolesRequest } from "../../shared/v1/requests/auth";
+import router from "../../shared/v1/router";
+import { changePWD } from "../../shared/v1/services/formsService";
+
+const tabIcon = document.createElement("link");
+tabIcon.setAttribute("rel", "icon");
+tabIcon.setAttribute("href", jwt);
+document.head.appendChild(tabIcon);
 
 const start = async () => {
   try {
@@ -17,12 +21,21 @@ const start = async () => {
       return;
     }
 
-    const header = createHeaderComponent([
-      { routerFunction: router.toSignout, name: "Sign out" },
-    ]);
-    header.appendComponentToElement(document.body);
+    const headerModel = new HeaderModel({
+      navBarBrand: {
+        routerFunction: router.toRoot,
+        img: {
+          src: jwt,
+          alt: "",
+          width: "70pem",
+          height: "50pem",
+        },
+      },
+      navItems: [{ routerFunction: router.toSignout, name: "Sign out" }],
+    });
+    document.body.appendChild(headerModel.component);
 
-    const changePasswordForm = createFormComponent({
+    const changePasswordFormModel = new FormModel({
       formId: "change-password-form",
       formGroups: [
         {
@@ -39,7 +52,7 @@ const start = async () => {
       submitText: "Change Password",
       submitFunction: changePWD,
     });
-    changePasswordForm.appendComponentToElement(document.body);
+    document.body.appendChild(changePasswordFormModel.component);
   } catch (err) {
     console.log(err);
     router.toError();

@@ -1,17 +1,30 @@
-import createHeaderComponent from "./shared/v1/components/header/creator";
-import createFormComponent from "./shared/v1/components/form/creator";
-import router from "./shared/v1/router";
-import { login } from "./shared/v1/services/formsService";
+import HeaderModel from "./shared/v1/components/header/model";
+import FormModel from "./shared/v1/components/form/model";
 import jwt from "../jwt.svg";
 
-document.getElementById("tabIcon").setAttribute("href", jwt);
+import router from "./shared/v1/router";
+import { login } from "./shared/v1/services/formsService";
 
-const header = createHeaderComponent([
-  { routerFunction: router.toRoot, name: "Sign in" },
-]);
-header.appendComponentToElement(document.body);
+const tabIcon = document.createElement("link");
+tabIcon.setAttribute("rel", "icon");
+tabIcon.setAttribute("href", jwt);
+document.head.appendChild(tabIcon);
 
-const loginForm = createFormComponent({
+const headerModel = new HeaderModel({
+  navBarBrand: {
+    routerFunction: router.toRoot,
+    img: {
+      src: jwt,
+      alt: "",
+      width: "70pem",
+      height: "50pem",
+    },
+  },
+  navItems: [{ routerFunction: router.toRoot, name: "Sign in" }],
+});
+document.body.appendChild(headerModel.component);
+
+const loginFormModel = new FormModel({
   formId: "login-form",
   formGroups: [
     {
@@ -28,4 +41,4 @@ const loginForm = createFormComponent({
   submitText: "Login",
   submitFunction: login,
 });
-loginForm.appendComponentToElement(document.body);
+document.body.appendChild(loginFormModel.component);

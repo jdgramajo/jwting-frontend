@@ -1,13 +1,17 @@
 import SignoutModel from "./model";
-import { signoutRequest } from "../../shared/v1/requests/auth";
-import router from "../../shared/v1/router";
 import jwt from "../../../jwt.svg";
 
-document.getElementById("tabIcon").setAttribute("href", jwt);
+import { signoutRequest } from "../../shared/v1/requests/auth";
+import router from "../../shared/v1/router";
+
+const tabIcon = document.createElement("link");
+tabIcon.setAttribute("rel", "icon");
+tabIcon.setAttribute("href", jwt);
+document.head.appendChild(tabIcon);
 
 const start = async () => {
-  const signoutComponent = new SignoutModel();
-  signoutComponent.appendComponentToElement(document.body);
+  const signoutModel = new SignoutModel();
+  document.body.appendChild(signoutModel.component);
 
   const response = await signoutRequest();
 
