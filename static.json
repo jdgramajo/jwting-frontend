@@ -1,0 +1,6 @@
+{
+  "root": "build",
+  "clean_urls": true,
+  "error_page": "v1/error/index.html",
+  "https-only": true
+}

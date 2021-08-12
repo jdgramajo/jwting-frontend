@@ -69,3 +69,40 @@ Will enable navigating within the app (and outside of it, possibly). Since compo
 <h3>Service</h3>
 
 Will encapsulate application logic, and will be shared as needed, via the imports allowed by the bundler. Use several files to focus on simplicity and readability.
+
+<br>
+
+<h1>Deploying to Heroku</h1>
+
+The <a href="https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-static">heroku-buildpack-static</a> is being used, configure it in the <code>static.json</code> file.
+
+Special things to consider are the following commands:
+
+<div>
+<code>
+heroku buildpacks:set https://github.com/hone/heroku-buildpack-static -a jwting-frontend
+</code>
+</div>
+<div>
+<code>
+heroku static:deploy -a jwting-frontend
+</code>
+</div>
+
+<br>
+<p>
+The webpack build for production is now sent to a build directory, which is ignored for commits, but has what is used by the buildpack to be able to deploy the app to Heroku.
+</p>
+
+<b>Important note:</b> The Heroku deploy currently requires a <b>manually added</b> <code>index.html</code> file that redirects to the entry endpoint for the app. The code that allows this is:
+
+<div>
+<code>
+&ltscript>
+window.location.href = "[entry endpoint]";
+&lt/script>
+</code>
+</div>
+
+<br>
+that is all the content of the file, currently.
