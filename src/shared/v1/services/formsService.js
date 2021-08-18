@@ -1,5 +1,4 @@
 import { postCredentials, postPWDChange } from "../requests/auth";
-import router from "../router";
 
 // The event.target is the form.
 const login = async (event) => {
@@ -59,14 +58,7 @@ const changePWD = async (event) => {
       newPasswordElement.value,
       confirmPasswordElement.value
     );
-    if (changePWDResponse.ok) {
-      router.toMain();
-      return true;
-    } else {
-      console.log(changePWDResponse.statusText);
-      router.toError();
-      return false;
-    }
+    return changePWDResponse.ok;
   } catch (err) {
     console.log(err);
     return false;

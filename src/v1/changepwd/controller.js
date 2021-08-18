@@ -11,6 +11,15 @@ tabIcon.setAttribute("rel", "icon");
 tabIcon.setAttribute("href", jwt);
 document.head.appendChild(tabIcon);
 
+const submitPasswordChange = async (event) => {
+  const success = await changePWD(event);
+  if (success) {
+    router.toMain();
+  } else {
+    router.toError();
+  }
+};
+
 const start = async () => {
   try {
     const response = await getMyRolesRequest();
@@ -50,7 +59,7 @@ const start = async () => {
         },
       ],
       submitText: "Change Password",
-      submitFunction: changePWD,
+      submitFunction: submitPasswordChange,
     });
     document.body.appendChild(changePasswordFormModel.component);
   } catch (err) {

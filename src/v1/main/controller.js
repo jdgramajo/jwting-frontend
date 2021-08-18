@@ -30,7 +30,11 @@ const start = async () => {
 
   const roles = await getUserRoles();
   const mainModel = new MainModel(roles);
-  document.body.appendChild(mainModel.component);
+  if (mainModel) {
+    document.body.appendChild(mainModel.component);
+  } else {
+    router.toError();
+  }
 };
 
 start();
