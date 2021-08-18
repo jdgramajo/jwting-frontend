@@ -24,6 +24,12 @@ const headerModel = new HeaderModel({
 });
 document.body.appendChild(headerModel.component);
 
+const submitLoginAndRedirect = async (event) => {
+  const loginSuccess = await login(event);
+  if (!loginSuccess) router.toError();
+  router.toMain();
+};
+
 const loginFormModel = new FormModel({
   formId: "login-form",
   formGroups: [
@@ -39,6 +45,6 @@ const loginFormModel = new FormModel({
     },
   ],
   submitText: "Login",
-  submitFunction: login,
+  submitFunction: submitLoginAndRedirect,
 });
 document.body.appendChild(loginFormModel.component);

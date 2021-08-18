@@ -35,18 +35,17 @@ class MainModel {
   }
 
   addRolesToList = (roles) => {
-    if (roles) {
-      this.mainTitleText.innerText = "Login successful!";
-      this.rolesTitleText.innerText = "Your roles are:";
-      roles.map((role) => {
-        const item = document.createElement("li");
-        item.innerText = `${role}`;
-        this.rolesList.appendChild(item);
-      });
-    } else {
-      this.mainTitleText.innerText = "Login successful...";
-      this.rolesTitleText.innerText = `...but getting roles failed, roles says: ${roles}`;
+    if (!roles?.length) {
+      this.mainTitleText.innerText = "Something happened...";
+      this.rolesTitleText.innerText = `...got: ${JSON.stringify(roles)}`;
     }
+    this.mainTitleText.innerText = "Login successful!";
+    this.rolesTitleText.innerText = "Your roles are:";
+    roles?.map((role) => {
+      const item = document.createElement("li");
+      item.innerText = `${role}`;
+      this.rolesList.appendChild(item);
+    });
   };
 }
 

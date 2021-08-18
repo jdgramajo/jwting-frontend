@@ -17,15 +17,7 @@ const login = async (event) => {
   const password = document.getElementById("password-group-input").value;
 
   try {
-    const credentialsResponse = await postCredentials(username, password);
-    if (credentialsResponse.ok) {
-      router.toMain();
-      return true;
-    } else {
-      console.log(credentialsResponse.statusText);
-      router.toError();
-      return false;
-    }
+    return await postCredentials(username, password);
   } catch (err) {
     console.log(err);
     return false;
