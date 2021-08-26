@@ -69,3 +69,46 @@ Will enable navigating within the app (and outside of it, possibly). Since compo
 <h3>Service</h3>
 
 Will encapsulate application logic, and will be shared as needed, via the imports allowed by the bundler. Use several files to focus on simplicity and readability.
+
+<br><br>
+
+<h1>Deploying to Firebase</h1>
+
+With the <b>firebase package installed</b> login to the account and deploy hosting only from webpack build directory, all configured in the firebase files. In order to have the build do this (after a <code>npm install</code>, of course):
+
+<div>
+<code>
+./node_modules/webpack-cli/bin/cli.js build --config webpack.prod.js
+</code>
+</div>
+<br>
+
+<B>IMPORTANT NOTE:</b> Remove the Heroku <code>index.html</code> file, if present, or deploy from a fresh build, this is necessary due to the build directory being ignored.
+
+The important commands follow:
+
+<div>
+<code>
+npm install -g firebase-tools
+</code>
+</div>
+<div>
+<code>
+git checkout -b firebase
+</code>
+</div>
+<div>
+<code>
+firebase login
+</code>
+</div>
+<div>
+<code>
+firebase projects:list
+</code>
+</div>
+<div>
+<code>
+firebase deploy --only hosting
+</code>
+</div>
