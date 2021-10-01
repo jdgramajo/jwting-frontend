@@ -18,7 +18,7 @@ This made me learn a lot...
 
 Since the dawn of time (by that I mean when I started going on the new JS frontend approach), I never wanted to dive too deep into CSS and UI design. Why? My main motivation is to deliver an MVP as fast as possible and as lean as possible.
 
-This is another reason to avoid using Angular. I am sure it is something I would not deffend too much when scaling, but for small one man army projects, it's not the right fit for me.
+This is another reason to avoid using Angular. I am sure it is something I would not defend too much when scaling, but for small one man army projects, it's not the right fit for me.
 
 <h3>Webpack</h3>
 
@@ -48,14 +48,14 @@ When the controller does load any number of components, then user interaction is
 
 <h3>Components</h3>
 
-Much like the Angular and other frameworks, they consist of tightly coupled files which provide UI elements so that the user may interact with the frontend, and its corresponding functionality scripts.
+Much like in Angular and other frameworks, they consist of tightly coupled files which provide UI elements so that the user may interact with the frontend, and its corresponding functionality scripts.
 
 Some of their main characteristics and building blocks of components are:
 
 <ul>
 <li>A directory with a controller and, optionally, a model (template) are their main traits. Models may be shared, so it is possible that an endpoint consists of only a controller file.</li>
 <li>The model is the <b>JS class</b> that specifies UI elements that are part of it, its Bootstrap classes, and <i>what</i> the component does, its capabilities. However, invoking such capabilities is a task for the endpoint's controller.</li>
-<li>The controller is in charge of instanting, setting up, and reacting to user actions. It is also responsible for all navigation, using a simple, common to all the app, router. Network requests are handled by shared request scripts.</li>
+<li>The controller is in charge of instanting the template and the actual DOM element, setting it up, and reacting to user actions. It is also responsible of navigation, using a simple, common to all the app, router. Network requests are handled by shared request scripts.</li>
 </ul>
 
 <h3>Requests</h3>
